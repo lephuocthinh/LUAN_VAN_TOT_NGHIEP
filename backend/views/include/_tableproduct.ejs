@@ -1,0 +1,59 @@
+<body>
+  <!-- Layout wrapper -->
+  <div class="layout-wrapper layout-content-navbar">
+    <div class="layout-container">
+      <%- include('../include/_menu') %>
+      <!-- Layout container -->
+      <div class="layout-page">
+        <%- include('../include/_navbar') %>
+        <div class="content-wrapper">
+          <!-- Content -->
+
+          <div class="container-xxl flex-grow-1 container-p-y">
+            
+            <!-- Basic Bootstrap Table -->
+            <div class="card">
+              <h5 class="card-header">Danh sách sản phẩm</h5>
+              <div class="table-responsive text-nowrap">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>STT</th>
+                      <th>Tên sản phẩm</th>
+                
+                      <th>Mô tả</th>
+                  
+                      <th>Danh mục</th>
+       
+                    </tr>
+                  </thead>
+                  <tbody class="table-border-bottom-0">
+                    <% for(var i = 0; i < products.length; i++) { %>
+                    <tr>
+                      <td><%= i+1 %></td>
+                      <td>
+                        <i class="fab fa-angular fa-lg text-danger me-3"></i>
+                        <strong><%= products[i].name %></strong>
+                      </td>
+
+                      <td><%= products[i].description %></td>
+                      
+                      <td><%= products[i].category.name %></td>
+                      <td>
+                        <a class="dropdown-item updateproduct" href="/update-product?id=<%= products[i]._id%>"
+                          ><i class="bx bx-edit-alt me-1"></i> Edit</a
+                        >
+                        <a class="dropdown-item deleteproduct" data-id=<%= products[i]._id%>
+                          ><i class="bx bx-trash me-1"></i> Delete</a
+                        >
+                      </td>
+                    </tr>
+                    <% } %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- / Content -->
+     

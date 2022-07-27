@@ -1,0 +1,75 @@
+<body>
+  <!-- Layout wrapper -->
+  <div class="layout-wrapper layout-content-navbar">
+    <div class="layout-container">
+      <%- include('../include/_menu') %>
+      <!-- Layout container -->
+      <div class="layout-page">
+        <%- include('../include/_navbar') %>
+        <div class="content-wrapper">
+          <!-- Content -->
+
+          <div class="container-xxl flex-grow-1 container-p-y">
+            
+            <!-- Basic Bootstrap Table -->
+            <div class="card">
+              <h5 class="card-header">Danh sách đơn hàng</h5>
+              <div class="table-responsive text-nowrap">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>STT</th>
+                      <th>ID</th>
+                      <th>Người đặt</th>
+                      <th>SĐT</th>
+                      <th>Ngày đặt</th>
+                      <th>Tổng tiền</th>
+                      <th>Địa chỉ</th>
+                      <th>Hình thức thanh toán</th>
+                      <th>Trạng thái thanh toán</th>
+                      <th>Trạng thái xử lý</th>
+                      <th>Hành động</th>
+                    </tr>
+                  </thead>
+                  <tbody class="table-border-bottom-0">
+                    <% for(var i = 0; i < orders.length; i++) { %>
+                    <tr>
+                      <td><%= i+1 %></td>
+                      <td>
+                        <i class="fab fa-angular fa-lg text-danger me-3"></i>
+                        <strong><%= orders[i]._id %></strong>
+                      </td>
+                      <td><%= orders[i].user.name %></td>
+                      <td><%= orders[i].user.phone %></td>
+                      <td><%= orders[i].createdAt %></td>
+                      <td><%= orders[i].amount %></td>
+                      <% if(orders[i].paymentMethod==="cash"){ %>
+                      <td><%= orders[i].address %></td>
+                      <td><%= orders[i].paymentMethod %></td>
+                      <td><%= orders[i].paymentStatus %></td>
+                      <% }else{ %>
+                      <td><%= orders[i].address.line1 %></td>
+                      <td><%= orders[i].paymentMethod.brand %></td>
+                      <td><%= orders[i].paymentStatus %></td>
+                      <% } %>
+                      <td><%= orders[i].status %></td>
+                      <td>
+                        <a class="dropdown-item update" href=""
+                          ><i class="bx bx-edit-alt me-1"></i> Xác nhận</a
+                        >
+                        <a class="dropdown-item deleteorder" data-id=<%= orders[i]._id%>
+                          ><i class="bx bx-trash me-1"></i> Delete</a
+                        >
+                      </td>
+                    </tr>
+                    <% } %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- / Content -->
+     
+  
+

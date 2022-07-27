@@ -1,0 +1,49 @@
+<body>
+    <!-- Layout wrapper -->
+    <div class="layout-wrapper layout-content-navbar">
+      <div class="layout-container">
+        <%- include('../include/_menu') %>
+        
+          <div class="content-wrapper">
+            <!-- Content -->
+            <div class="container-xxl flex-grow-1 container-p-y">
+            
+
+              <!-- Basic Layout -->
+              <div class="row">
+                <div class="col-xl">
+                  <div class="card mb-4">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                      <h5 class="mb-0">Cập nhật sự kiện</h5>
+                     
+                    </div>
+                    <div class="card-body">
+                      <form action="/api/sales/updateSale" method="POST" id="update_sale">
+                        <div class="mb-3">
+                          <label class="form-label" for="basic-default-fullname">Tên sự kiện</label>
+                          <input type="hidden" name="saleId" value="<%= sale._id %>">
+                          <input type="text" class="form-control" name="name" value="<%= sale.name %>"/>
+                        </div>
+                        <div class="mb-3">
+                          <label class="form-label" for="basic-default-fullname">Phần trăm giảm giá</label>
+                          <input type="text" class="form-control" name="percent" value="<%= sale.percent %>"/>
+                        </div>
+                        <div class="mb-3">
+                          <label class="form-label" for="basic-default-fullname">Ngày bắt đầu</label>
+                          <input type="date" class="form-control" name="starttime" value="<%= sale.starttime %>"/>
+                        </div>
+                        <div class="mb-3">
+                          <label class="form-label" for="basic-default-fullname">Ngày kết thúc</label>
+                          <input type="date" class="form-control" name="endtime" value="<%= sale.endtime %>"/>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Cập nhật</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              
+              </div>
+            </div>
+          <!-- / Content -->
+        
+  
